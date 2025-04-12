@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Recent Girl Math Posts</h1>
+
+    {% if posts %}
+    {% for post in posts %}
+    <div class="card post-card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Posted by {{ post.author.username }}</h6>
+            <p class="card-text">
+                <strong>Expense:</strong> {{ post.expense }}<br>
+                <strong>Justification:</strong> {{ post.justification }}
+            </p>
+            <div class="vote-buttons">
+                {% for vote_type in vote_types %}
+                <form action="{{ url_for('posts.vote', id=post.id) }}" method="post" class="d-inline">
+                    <input type="hidden" name="vote_type" value="{{ vote_type }}">
+                    <button type="submit" class="btn btn-outline-primary vote-btn">{{ vote_type }}</button>
+                </form>
+                {% endfor %}
+            </div>
+            <div class="mt-3">
+                <a href="{{ url_for('posts.view', id=post.id) }}" class="btn btn-info">View Details</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% if pagination %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if pagination.has_prev %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('main.index', page=pagination.prev_num) }}">Previous</a>
+            </li>
+            {% endif %}
+
+            {% for page in pagination.iter_pages() %}
+            {% if page %}
+            <li class="page-item {% if page == pagination.page %}active{% endif %}">
+                <a class="page-link" href="{{ url_for('main.index', page=page) }}">{{ page }}</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">...</span>
+            </li>
+            {% endif %}
+            {% endfor %}
+
+            {% if pagination.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('main.index', page=pagination.next_num) }}">Next</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+    {% else %}
+    <div class="alert alert-info">
+        No posts yet. Be the first to share your girl math!
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

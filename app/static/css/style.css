@@ -1,0 +1,48 @@
+.post-card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.vote-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.vote-btn {
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 0.9em;
+}
+
+.comment-section {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.comment {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 3px solid #ccc;
+}
+
+.reply {
+    margin-left: 40px;
+    border-left: 3px solid #ddd;
+}
+
+.upvote-btn {
+    color: #6c757d;
+    cursor: pointer;
+}
+
+.upvote-btn:hover {
+    color: #007bff;
+}
+
+.hall-of-fame-post {
+    border-left: 5px solid gold;
+}
