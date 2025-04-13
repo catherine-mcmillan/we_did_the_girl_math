@@ -1,7 +1,35 @@
+:root {
+    --mint-green: #d2f1e4;
+    --light-pink: #fbcaef;
+    --hot-pink: #f865b0;
+    --magenta: #e637bf;
+    --dark-purple: #48304d;
+}
+
+body {
+    background-color: var(--mint-green);
+    color: var(--dark-purple);
+}
+
+.navbar {
+    background-color: var(--dark-purple) !important;
+}
+
+.navbar-brand,
+.nav-link {
+    color: var(--mint-green) !important;
+}
+
+.nav-link:hover {
+    color: var(--light-pink) !important;
+}
+
 .post-card {
     margin-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border: 2px solid var(--light-pink);
 }
 
 .vote-buttons {
@@ -15,34 +43,100 @@
     border-radius: 20px;
     padding: 5px 15px;
     font-size: 0.9em;
+    background-color: var(--hot-pink);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.vote-btn:hover {
+    background-color: var(--magenta);
+    transform: translateY(-2px);
 }
 
 .comment-section {
     margin-top: 30px;
-    border-top: 1px solid #eee;
+    border-top: 2px solid var(--light-pink);
     padding-top: 20px;
 }
 
 .comment {
     padding: 10px;
     margin-bottom: 10px;
-    border-left: 3px solid #ccc;
+    border-left: 3px solid var(--hot-pink);
+    background-color: white;
+    border-radius: 5px;
 }
 
 .reply {
     margin-left: 40px;
-    border-left: 3px solid #ddd;
+    border-left: 3px solid var(--light-pink);
 }
 
 .upvote-btn {
-    color: #6c757d;
+    color: var(--dark-purple);
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .upvote-btn:hover {
-    color: #007bff;
+    color: var(--magenta);
+    transform: scale(1.1);
 }
 
 .hall-of-fame-post {
-    border-left: 5px solid gold;
+    border-left: 5px solid var(--hot-pink);
+    background-color: var(--mint-green);
+}
+
+.alert-info {
+    background-color: var(--light-pink);
+    border-color: var(--hot-pink);
+    color: var(--dark-purple);
+}
+
+.btn-primary {
+    background-color: var(--hot-pink);
+    border-color: var(--hot-pink);
+}
+
+.btn-primary:hover {
+    background-color: var(--magenta);
+    border-color: var(--magenta);
+}
+
+.form-control:focus {
+    border-color: var(--hot-pink);
+    box-shadow: 0 0 0 0.2rem rgba(248, 101, 176, 0.25);
+}
+
+/* New styles for better visual hierarchy */
+.card-header {
+    background-color: var(--light-pink);
+    color: var(--dark-purple);
+}
+
+.badge {
+    background-color: var(--hot-pink);
+    color: white;
+}
+
+/* Animation for interactive elements */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.vote-btn:active,
+.upvote-btn:active {
+    animation: pulse 0.3s ease;
 }

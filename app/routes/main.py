@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, current_app
 from app.models.post import Post, VoteType
 from flask_login import current_user
+from datetime import datetime
 
 bp = Blueprint('main', __name__)
 
@@ -36,3 +37,7 @@ def help_me_justify():
                          posts=help_posts.items, 
                          pagination=help_posts,
                          vote_types=VoteType.get_all_types())
+
+@bp.route('/privacy')
+def privacy():
+    return render_template('privacy.html', title='Privacy Policy', now=datetime.utcnow)
